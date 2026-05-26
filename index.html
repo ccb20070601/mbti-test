@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 饮料人格测试</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+
+    <!-- 认证页面 -->
+    <div id="auth-page" class="page hidden">
+        <div class="container">
+            <div class="card">
+                <div class="logo">
+                    <span class="logo-icon">🧃</span>
+                    <h1 id="auth-title">饮料人格测试</h1>
+                    <p>测测你的MBTI，匹配专属饮料与代表人物</p>
+                </div>
+                <form id="auth-form" data-mode="login">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" placeholder="请输入用户名" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" placeholder="请输入密码" required autocomplete="current-password">
+                    </div>
+                    <div class="form-group" id="confirm-group" style="display:none">
+                        <label for="confirm-password">确认密码</label>
+                        <input type="password" id="confirm-password" placeholder="请再次输入密码" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="auth-submit">登录</button>
+                </form>
+                <div class="auth-switch" id="switch-auth">
+                    没有账号？<a href="#">点此注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 首页 -->
+    <div id="home-page" class="page hidden">
+        <div style="width:100%;min-height:100vh">
+            <div class="header">
+                <div class="header-user">
+                    <div class="avatar">🧃</div>
+                    <span id="user-display"></span>
+                </div>
+                <button class="btn-logout" id="logout-btn">退出登录</button>
+            </div>
+            <div class="home-content">
+                <div class="welcome-section">
+                    <h2>欢迎回来 👋</h2>
+                    <p>准备好探索你的人格密码了吗？</p>
+                </div>
+                <div class="start-quiz-card" id="start-quiz-btn">
+                    <div class="quiz-icon">🧬</div>
+                    <h3>开始MBTI测试</h3>
+                    <p>32道精选题目 · 匹配专属饮料 · 发现你的代表人物</p>
+                </div>
+                <div class="history-section">
+                    <h3>📋 测试历史</h3>
+                    <div id="history-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 测试页面 -->
+    <div id="quiz-page" class="page hidden">
+        <div class="quiz-container">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+                </div>
+                <div class="progress-text" id="question-text"></div>
+            </div>
+            <div class="question-card">
+                <div class="question-number" id="dimension-badge"></div>
+                <div class="question-content" id="question-content"></div>
+                <div class="options-preview">
+                    <div class="option-preview option-a">
+                        <div class="option-label">选项 A</div>
+                        <div id="option-a-text"></div>
+                    </div>
+                    <div class="option-preview option-b">
+                        <div class="option-label">选项 B</div>
+                        <div id="option-b-text"></div>
+                    </div>
+                </div>
+                <div class="score-scale">
+                    <div class="score-scale-label">请选择你的倾向程度：</div>
+                    <div class="score-options">
+                        <div class="score-option" data-score="0" data-label="很同意A">A</div>
+                        <div class="score-option" data-score="1" data-label="有些同意A">A</div>
+                        <div class="score-option" data-score="2" data-label="略微同意A">A</div>
+                        <div class="score-option" data-score="3" data-label="中立">=</div>
+                        <div class="score-option" data-score="4" data-label="略微同意B">B</div>
+                        <div class="score-option" data-score="5" data-label="有些同意B">B</div>
+                        <div class="score-option" data-score="6" data-label="很同意B">B</div>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-nav">
+                <button class="btn btn-secondary btn-sm" id="prev-btn">← 上一题</button>
+                <button class="btn btn-primary btn-sm" id="next-btn">下一题 →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结果页面 -->
+    <div id="result-page" class="page hidden">
+        <div class="result-container">
+            <div class="result-card">
+                <div class="result-emoji" id="result-emoji"></div>
+                <div class="result-drink" id="result-drink"></div>
+                <div class="result-person" id="result-person"></div>
+                <div class="result-mbti" id="result-mbti"></div>
+                <div class="result-description" id="result-description"></div>
+            </div>
+            <div class="dimensions-section">
+                <h3>📊 维度分析</h3>
+                <div id="dimension-bars"></div>
+            </div>
+            <div class="result-actions">
+                <button class="btn btn-accent" id="retry-btn">🔄 重新测试</button>
+                <button class="btn btn-secondary" id="home-btn">🏠 返回首页</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
